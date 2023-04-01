@@ -1,3 +1,5 @@
+import { baseURL } from '../helpers/paths'
+
 export default async function serviceArticle(dataForm) {
   const data =
     JSON.stringify({
@@ -11,7 +13,7 @@ export default async function serviceArticle(dataForm) {
 
   if (method !== 'GET') {
     try {
-      const res = await fetch(`https://blog.kata.academy/api/${dataForm.resource}`, {
+      const res = await fetch(`${baseURL}/${dataForm.resource}`, {
         method,
         headers: {
           'Content-Type': 'application/json',
@@ -33,7 +35,7 @@ export default async function serviceArticle(dataForm) {
   }
 
   try {
-    const res = await fetch(`https://blog.kata.academy/api/${dataForm.resource}`, {
+    const res = await fetch(`${baseURL}/${dataForm.resource}`, {
       method,
       headers: {
         'Content-Type': 'application/json',

@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'
 
+import storageService from '../../services/storageService'
+
 import avatarPlug from './avatar.png'
 import style from './HeaderUserInfo.module.css'
 
@@ -31,7 +33,7 @@ function HeaderUserInfo({ user, logout }) {
         className={classNames(style.btn, style['btn-log-out'])}
         onClick={() => {
           logout()
-          localStorage.removeItem('user')
+          storageService.removeLocalStorage('user')
         }}
       >
         Log Out

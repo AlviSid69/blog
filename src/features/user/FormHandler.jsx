@@ -8,8 +8,7 @@ import UserFormAgreement from '../../components/UserFormAgreement/UserFormAgreem
 import UserFormBtn from '../../components/UserFormBtn/UserFormBtn'
 import UserGeneralError from '../../components/UserGeneralError/UserGeneralError'
 import validationRulesMaker from '../../helpers/validationRulesMaker'
-
-import { fetchServiceUser, errorReset } from './userSlice'
+import { fetchServiceUser, errorReset } from '../../services/userSlice'
 
 function FormHandler({ formSet }) {
   const dispatch = useDispatch()

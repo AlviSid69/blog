@@ -6,12 +6,12 @@ import ReactMarkdown from 'react-markdown'
 import { Link, useNavigate } from 'react-router-dom'
 import { Popconfirm } from 'antd'
 
+import getId from '../../helpers/getId'
+import { baseURL } from '../../helpers/paths'
 import Favorite from '../Favorite/Favorite'
 
 import style from './post.module.css'
 import avatarPlug from './avatar.png'
-
-let key = 0
 
 export default function Post({
   slug,
@@ -33,7 +33,7 @@ export default function Post({
 
   useEffect(() => {
     async function fetchDelete() {
-      const res = await fetch(`https://blog.kata.academy/api/articles/${slug}`, {
+      const res = await fetch(`${baseURL}/articles/${slug}`, {
         method: 'DELETE',
         headers: {
           Authorization: `Token ${token}`,
@@ -49,7 +49,7 @@ export default function Post({
     }
   }, [deleting, navigate, slug, token])
 
-  const tags = tagList.map((tag) => <span key={key++}>{tag}</span>)
+  const tags = tagList.map((tag) => <span key={getId()}>{tag}</span>)
 
   const btn = (
     <div className={style['right-block-second-floor']}>

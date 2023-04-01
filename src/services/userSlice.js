@@ -1,5 +1,9 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 
+import { baseURL } from '../helpers/paths'
+
+import storageService from './storageService'
+
 class ValidationError extends Error {
   constructor(message, obj = {}) {
     super(message)
@@ -20,7 +24,7 @@ export const fetchServiceUser = createAsyncThunk(
     let result
 
     try {
-      const res = await fetch(`https://blog.kata.academy/api/${dataForm.resource}`, {
+      const res = await fetch(`${baseURL}/${dataForm.resource}`, {
         method: dataForm.method,
         headers: {
           'Content-Type': 'application/json',
@@ -35,7 +39,7 @@ export const fetchServiceUser = createAsyncThunk(
         throw new ValidationError(res.statusText, result)
       }
 
-      localStorage.setItem('user', JSON.stringify(result))
+      storageService.putLocalStorage('user', result)
       callback()
       return result
     } catch (err) {

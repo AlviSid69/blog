@@ -2,14 +2,15 @@ import { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Link, Outlet } from 'react-router-dom'
 
-import { getUserLocal, logOut } from '../../features/user/userSlice'
+import storageService from '../../services/storageService'
+import { getUserLocal, logOut } from '../../services/userSlice'
 import HeaderSignBtns from '../HeaderSignBtns/HeaderSignBtns'
 import HeaderUserInfo from '../HeaderUserInfo/HeaderUserInfo'
 
 import style from './layout.module.css'
 
 function Layout() {
-  const userLocal = localStorage.getItem('user') || null
+  const userLocal = storageService.getLocalStorage('user') || null
   const isLoggedIn = useSelector((state) => state.user.isLoggedIn)
   const user = useSelector((state) => state.user.user)
 

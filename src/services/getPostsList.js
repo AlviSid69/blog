@@ -1,8 +1,10 @@
+import { baseURL } from '../helpers/paths'
+
 export default async function getPostList(token = null, currentPage = 1) {
   const offset = (currentPage - 1) * 10
 
   try {
-    const response = await fetch(`https://blog.kata.academy/api/articles?limit=10&offset=${offset}`, {
+    const response = await fetch(`${baseURL}/articles?limit=10&offset=${offset}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Token ${token}`,

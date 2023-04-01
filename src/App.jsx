@@ -8,18 +8,19 @@ import CreateNewArticle from './pages/NewArticle'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import Profile from './pages/Profile'
+import { route } from './helpers/paths'
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<Layout />}>
       <Route index element={<Posts />} />
-      <Route path="/articles" element={<Posts />} />
-      <Route path="articles/:slug" element={<Post />} />
-      <Route path="articles/:slug/edit" element={<EditPost />} />
-      <Route path="new-article" element={<CreateNewArticle />} />
-      <Route path="sign-up" element={<SignUp />} />
-      <Route path="sign-in" element={<SignIn />} />
-      <Route path="profile" element={<Profile />} />
+      <Route path={route.articlePage} element={<Posts />} />
+      <Route path={`${route.articlePage}/:slug`} element={<Post />} />
+      <Route path={`${route.articlePage}/:slug/edit`} element={<EditPost />} />
+      <Route path={route.articleNew} element={<CreateNewArticle />} />
+      <Route path={route.signUp} element={<SignUp />} />
+      <Route path={route.signIn} element={<SignIn />} />
+      <Route path={route.profile} element={<Profile />} />
       <Route path="*" element={<h1>Page not found</h1>} />
     </Route>
   )
