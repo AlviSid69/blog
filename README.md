@@ -1,1 +1,1 @@
-https://kata-blog-6uvetl7rh-alvisid69.vercel.app/
+https://kata-blog-cb0mmirk2-alvisid69.vercel.app/
